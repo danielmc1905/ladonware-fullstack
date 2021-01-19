@@ -1,0 +1,62 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2 left-side-view">
+            <img src="https://static.wixstatic.com/media/eb8851_33aa80076f01490fa6e6085aeeb476f9~mv2.png/v1/fill/w_326,h_164,al_c,q_85,usm_0.66_1.00_0.01/Ladonware.webp"
+                alt="">
+        </div>
+        <div class="col-10 right-side-view">
+            <div class="nav-section">
+                <h1>Prueba Técnica Full-Stack Developers</h1>
+            </div>
+            <div class="row search-section">
+                <div class="col-6 section-title">
+                    <h2><strong>PRODUCTOS</strong></h2>
+                </div>
+                <div class="col-6 search-features">
+                    <div class="search-input">
+                        <span class="material-icons">
+                            search
+                        </span>
+                        <input placeholder="Buscar productos" type="text">
+                    </div>
+                    <button mat-raised-button (click)="openFormDialog()">
+                        <mat-icon>add</mat-icon>
+                        Añadir producto
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="products-list">
+                        <p class="title">Lista de Productos</p>
+                        <div class="column-fields">
+                            <p class="field product-name">
+                                Nombre
+                            </p>
+                            <p class="field">
+                                Categoría
+                            </p>
+                            <p class="field">
+                                Precio
+                            </p>
+                            <p class="field">
+                                Cantidad
+                            </p>
+                            <p class="field">
+                                Inventario
+                            </p>
+                            <p class="field product-actions">
+                                Acción
+                            </p>
+                        </div>
+                        <div class="product-items">
+                            <app-product-item *ngFor="let item of productsList; let i = index" [product]="item"
+                                [showUnderline]="i+1 != productsList.length">
+                            </app-product-item>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

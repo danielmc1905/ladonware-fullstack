@@ -1,0 +1,32 @@
+<div class="product-item">
+    <div class="field product-description">
+        <img [src]="product.image_url"
+            alt="">
+        <div class="product-info">
+            <p>{{ product.name }}</p>
+            <p>{{ product.description }}</p>
+        </div>
+    </div>
+    <span class="field">
+        {{ product.category_name }}
+    </span>
+    <span class="field">
+        $ {{ product.price }}
+    </span>
+    <span class="field">
+        {{ product.quantity }}
+    </span>
+    <div class="field">
+        <div [style.background-color]="getStatusColor()" id="dot"></div>
+        <span [style.color]="getStatusColor()">{{ product.status }}</span>
+    </div>
+    <div class="field product-actions">
+        <span class="material-icons edit" (click)="openFormDialog()">
+            edit
+        </span>
+        <span class="material-icons" (click)="openConfirmDialog()">
+            delete_outline
+        </span>
+    </div>
+    <div *ngIf="showUnderline" class="item-divider"></div>
+</div>
