@@ -17,7 +17,7 @@
                         <span class="material-icons">
                             search
                         </span>
-                        <input placeholder="Buscar productos" type="text">
+                        <input placeholder="Buscar productos" type="text" [(ngModel)]="searchText">
                     </div>
                     <button mat-raised-button (click)="openFormDialog()">
                         <mat-icon>add</mat-icon>

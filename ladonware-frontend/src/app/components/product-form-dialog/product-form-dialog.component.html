@@ -1,1 +1,52 @@
-<p>confirm-dialog works!</p>
+<form class="product-form" [formGroup]="productForm" (submit)="submitForm()">
+    <h2>{{ product.id ? 'Editar
+        producto' : 'Agregar nuevo producto'}}</h2>
+    <mat-form-field class="form-inputs">
+        <mat-label>Nombre del producto</mat-label>
+        <input matInput placeholder="Nike Adapt BB 2.0" formControlName="name">
+    </mat-form-field>
+    <mat-form-field class="form-inputs">
+        <mat-label>Descripción del producto</mat-label>
+        <input matInput placeholder="84% Poliester, 16% Elástico" formControlName="description">
+    </mat-form-field>
+
+    <mat-form-field class="form-inputs">
+        <mat-label>Seleccionar categoría</mat-label>
+        <mat-select formControlName="category_name">
+            <mat-option *ngFor="let category of categories" [value]="category">
+                {{category}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="form-inputs">
+        <mat-label>Ingresar precio</mat-label>
+        <input matInput placeholder="150" type="number" formControlName="price">
+    </mat-form-field>
+    <mat-form-field class="form-inputs">
+        <mat-label>Ingresar cantidad</mat-label>
+        <input matInput placeholder="1" type="number" formControlName="quantity">
+    </mat-form-field>
+
+    <mat-form-field class="form-inputs">
+        <mat-label>Seleccionar disponibilidad del producto</mat-label>
+        <mat-select formControlName="status">
+            <mat-option *ngFor="let status of state" [value]="status">
+                {{status}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field class="form-inputs">
+        <mat-label>Ingresar enlace de la imagen</mat-label>
+        <input matInput placeholder="https://google.sites.com" formControlName="image_url">
+    </mat-form-field>
+
+    <div class="buttons-section">
+        <button class="submit-btn" mat-raised-button type="submit" color="primary"
+            [ngClass]="{'disable-btn': !productForm.valid }" [disabled]="!productForm.valid">{{ product.id ? 'Editar
+            producto' : 'Añadir producto'}}</button>
+        <button mat-raised-button (click)="dialogRef.close()">Cancelar</button>
+    </div>
+</form>

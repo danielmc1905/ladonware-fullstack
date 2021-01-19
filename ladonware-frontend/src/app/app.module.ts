@@ -7,8 +7,11 @@ import { ProductItemComponent } from './components/product-item/product-item.com
 import { HomeComponent } from './pages/home/home.component';
 import { ProductFilterPipe } from './pipes/product-filter.pipe';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
+import { ProductFormDialogComponent } from './components/product-form-dialog/product-form-dialog.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 //Material Angular
 import { MatButtonModule } from '@angular/material/button';
@@ -16,8 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { ProductFormDialogComponent } from './components/product-form-dialog/product-form-dialog.component';
-import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -33,12 +35,15 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     NoopAnimationsModule,
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
     MatSelectModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

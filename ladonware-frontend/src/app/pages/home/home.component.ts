@@ -11,6 +11,7 @@ import Product from 'src/app/model/Product';
 export class HomeComponent implements OnInit {
 
   productsList: Product[] = [];
+  searchText: string = '';
 
   constructor(
     private dialog: MatDialog
@@ -31,33 +32,12 @@ export class HomeComponent implements OnInit {
     this.productsList.push(product);
     this.productsList.push(product);
     this.productsList.push(product);
-    this.productsList.push(product);
-    this.productsList.push(product);
-    this.productsList.push(product);
-    this.productsList.push(product);
-    this.productsList.push(product);
-    this.productsList.push(product);
-    this.productsList.push(product);
-    this.productsList.push(product);
-    this.productsList.push(product);
-    this.productsList.push(product);
-    this.productsList.push(product);
-    this.productsList.push(product);
-    this.productsList.push(product);
-    this.productsList.push(product);
-    this.productsList.push(product);
-    this.productsList.push(product);
-    this.productsList.push(product);
-    this.productsList.push(product);
-    this.productsList.push(product);
-    this.productsList.push(product);
-    this.productsList.push(product);
   }
 
   openFormDialog(): void {
     const dialogRef = this.dialog.open(ProductFormDialogComponent, {
-      width: '250px',
-      data: { product: new Product() }
+      width: '450px',
+      data: new Product()
     });
 
     dialogRef.afterClosed().subscribe(newProduct => {

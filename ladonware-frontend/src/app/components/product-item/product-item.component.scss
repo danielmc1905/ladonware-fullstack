@@ -30,6 +30,12 @@
             border-radius: 4px;
         }
 
+        .img {
+            width: 72px;
+            display: flex;
+            justify-content: center;
+        }
+
         .product-info {
             display: flex;
             flex-direction: column;

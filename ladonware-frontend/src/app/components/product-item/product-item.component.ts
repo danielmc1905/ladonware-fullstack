@@ -21,8 +21,6 @@ export class ProductItemComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.product)
-    console.log(this.showUnderline)
   }
 
   getStatusColor() {
@@ -37,8 +35,8 @@ export class ProductItemComponent implements OnInit {
 
   openFormDialog(): void {
     const dialogRef = this.dialog.open(ProductFormDialogComponent, {
-      width: '250px',
-      data: { product: this.product }
+      width: '450px',
+      data: this.product
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -49,8 +47,8 @@ export class ProductItemComponent implements OnInit {
 
   openConfirmDialog(): void {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      width: '250px',
-      data: { product: this.product }
+      width: '450px',
+      data: this.product
     });
 
     dialogRef.afterClosed().subscribe(result => {

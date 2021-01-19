@@ -1,0 +1,35 @@
+.product-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .form-inputs {
+        width: 90%;
+    }
+
+    .buttons-section {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+
+        .submit-btn {
+            color: #fff;
+            background-color: #0da2ff;
+        }
+
+        button {
+            height: 42px;
+            font-size: 13px;
+        }
+
+        .disable-btn {
+            opacity: 0.5;
+        }
+
+        button:focus {
+            outline:0;
+        }
+    }
+    
+}
