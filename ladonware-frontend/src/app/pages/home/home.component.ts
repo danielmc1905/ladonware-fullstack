@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
     product.price = 350.25;
     product.quantity = 4;
     product.status = 'En Stock';
-    product.image_url = 'https://images.squarespace-cdn.com/content/v1/59aa18678fd4d28748fdc362/1582234001660-F0S8MPSOXU2TFPKTLT9L/ke17ZwdGBToddI8pDm48kIIWdAnyBSrZ5E6Gv7JXlDh7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0k9kZPbuygN4RSDPe_G5PO_pbVb0jdkjHmk-MhSr8npod9fyhKaF6iH64GfT8sX2GQ/IMG_9272.jpg';
+    product.image_url = 'https://storage.googleapis.com/ladonware-6f358.appspot.com/products/1611082481398-test.jpg';
     this.productsList.push(product);
     this.productsList.push(product);
     this.productsList.push(product);

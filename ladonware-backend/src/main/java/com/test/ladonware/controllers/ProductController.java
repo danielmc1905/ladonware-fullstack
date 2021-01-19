@@ -3,6 +3,7 @@ package com.test.ladonware.controllers;
 import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,18 +17,26 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.test.ladonware.entities.Product;
+import com.test.ladonware.services.FirebaseService;
+import com.test.ladonware.services.ProductService;
 
 @RestController
 @RequestMapping(path = "/v1/products")
 @CrossOrigin(origins = "*")
 public class ProductController {
+	
+	@Autowired
+	FirebaseService firebaseService;
+	
+	@Autowired
+	ProductService productService;
 
 	/*
 	 * Creates a new product based on the data provided
 	 * 
 	 * @Param Product
 	 */
-	@PostMapping("/products")
+	@PostMapping("/add")
 	public ResponseEntity<HashMap<String, Object>> createProduct(@RequestBody Product product) {
 
 		return null;
@@ -38,7 +47,7 @@ public class ProductController {
 	 * 
 	 * @Param Product
 	 */
-	@PutMapping("/products")
+	@PutMapping("/edit")
 	public ResponseEntity<HashMap<String, Object>> editProduct(@RequestBody Product product) {
 
 		return null;
@@ -48,7 +57,7 @@ public class ProductController {
 	 * Retrieves all the registered products
 	 * 
 	 */
-	@GetMapping("/products")
+	@GetMapping("/")
 	public List<Product> getAllProducts() {
 
 		return null;
@@ -59,7 +68,7 @@ public class ProductController {
 	 * 
 	 * @Param id
 	 */
-	@DeleteMapping("/products/{id}")
+	@DeleteMapping("/{id}")
 	public ResponseEntity<HashMap<String, Object>> deleteProductById(@PathVariable String id) {
 
 		return null;
@@ -68,9 +77,9 @@ public class ProductController {
 	/*
 	 * Uploads a multipart file to the firebase storage service
 	 */
-	@PostMapping("/products/upload")
-	public ResponseEntity<HashMap<String, Object>> uploadImage(@RequestBody MultipartFile file) {
-
-		return null;
+	@PostMapping("/files")
+	public String uploadImage(@RequestBody MultipartFile file) {
+		
+		return firebaseService.uploadFile(file);
 	}
 }

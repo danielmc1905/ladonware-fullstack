@@ -23,13 +23,15 @@ import com.google.cloud.storage.StorageOptions;
 public class FirebaseService {
 
 	private StorageOptions storageOptions;
-	private String bucketName = "ladonwareStorage";
+	private String bucketName = "ladonware-6f358.appspot.com";
 
 	/*
-	 * Initialize firebase StorageOptions and uploads the file to the firebase storage service
+	 * Initialize firebase StorageOptions and uploads the file to the firebase
+	 * storage service
+	 * 
 	 * @Param MultipartFile
-	 * */
-	public String[] uploadFile(MultipartFile multipartFile) {
+	 */
+	public String uploadFile(MultipartFile multipartFile) {
 
 		firebaseInit();
 
@@ -41,12 +43,14 @@ public class FirebaseService {
 
 			Storage storage = storageOptions.getService();
 
-			BlobId blobId = BlobId.of(bucketName, objectName);
+			BlobId blobId = BlobId.of(bucketName, "products/" + objectName);
 			BlobInfo blobInfo = BlobInfo.newBuilder(blobId).build();
-			Blob blob = storage.create(blobInfo, Files.readAllBytes(filePath));
+			storage.create(blobInfo, Files.readAllBytes(filePath));
+
+			String imageUrl = "https://storage.googleapis.com/" + bucketName + "/products/" + objectName;
 
 			System.out.println("File " + filePath + " uploaded to bucket " + bucketName + " as " + objectName);
-			return new String[] { "fileUrl", objectName };
+			return imageUrl;
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -57,8 +61,9 @@ public class FirebaseService {
 
 	/*
 	 * Converts the multipartfile to a fileOutputStream in order to be uploaded
+	 * 
 	 * @Param MultipartFile
-	 * */
+	 */
 	private File convertMultiPartToFile(MultipartFile file) throws IOException {
 		File convertedFile = new File(Objects.requireNonNull(file.getOriginalFilename()));
 		FileOutputStream fos = new FileOutputStream(convertedFile);
@@ -69,16 +74,17 @@ public class FirebaseService {
 
 	/*
 	 * Generates the name of the file
+	 * 
 	 * @Param MultipartFile
 	 * 
-	 * */
+	 */
 	private String generateFileName(MultipartFile multiPart) {
 		return new Date().getTime() + "-" + Objects.requireNonNull(multiPart.getOriginalFilename()).replace(" ", "_");
 	}
 
 	/*
 	 * Initialize the firebase storage service
-	 * */
+	 */
 	public void firebaseInit() {
 		FileInputStream serviceAccount;
 
