@@ -2,8 +2,11 @@
 Prueba técnica ladonware
 
 Pasos iniciales
-1- Instalar git haciendo uso del siguiente enlace https://git-scm.com/.
-2- Abrir la terminar sobre el directorio deseado y clonar el repositorio de github con el siguiente 
+1- Descargar e instalar nodejs mediante el siguiente enlace https://nodejs.org/es/.
+2- Descargar e instalar git haciendo uso del siguiente enlace https://git-scm.com/.
+3- Descargar e instalar el jdk de java con el sigueinte enlace https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html.
+4- Instalar angular cli con el comando "npm install -g @angular/cli".
+5- Abrir la terminar sobre el directorio deseado y clonar el repositorio de github con el siguiente 
 comando "git clone https://github.com/danielmc1905/ladonware-fullstack.git".
 
 
