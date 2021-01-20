@@ -1,9 +1,14 @@
 # ladonware-fullstack
 Prueba técnica ladonware
 
-Enlaces de interés
+## Enlaces de interés
 1. Front-end: hosteado en Firebase y puede ser accedido con el siguiente enlace: https://ladonware-6f358.web.app/home.
 2. Back-end: hosteado en Heroku y puede ser accedido con el siguiente enlace: https://ladonware.herokuapp.com/.
+3. Documentación del API: https://ladonware.herokuapp.com/swagger-ui.html.
+
+
+Arquitectura del proyecto
+![Arquitectura](./Ladonware)
 
 
 Pasos iniciales
