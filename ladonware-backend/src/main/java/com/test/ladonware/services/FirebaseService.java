@@ -54,6 +54,7 @@ public class FirebaseService {
 
 		} catch (IOException e) {
 			e.printStackTrace();
+			System.out.println("File not found");
 			return null;
 		}
 
@@ -80,6 +81,28 @@ public class FirebaseService {
 	 */
 	private String generateFileName(MultipartFile multiPart) {
 		return new Date().getTime() + "-" + Objects.requireNonNull(multiPart.getOriginalFilename()).replace(" ", "_");
+	}
+
+	/*
+	 * Deletes a file from the firebase storage bucket
+	 * 
+	 * @Param MultipartFile
+	 */
+	public boolean deleteFile(String fileName) {
+
+		firebaseInit();
+
+		try {
+			Storage storage = storageOptions.getService();
+			BlobId blobId = BlobId.of(bucketName, "products/" + fileName);
+			storage.delete(blobId);
+			System.out.println("File " + fileName + " has been deleted from bucket " + bucketName);
+			return true;
+		} catch (Exception e) {
+			System.out.println("Error deleting file: " + e.getMessage());
+			return false;
+		}
+
 	}
 
 	/*

@@ -8,8 +8,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProductFilterPipe } from './pipes/product-filter.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductFormDialogComponent } from './components/product-form-dialog/product-form-dialog.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
@@ -26,7 +25,6 @@ import { MatInputModule } from '@angular/material/input';
     AppComponent,
     ProductItemComponent,
     HomeComponent,
-    DeleteDialogComponent,
     ProductFilterPipe,
     ProductFormDialogComponent,
     ConfirmDialogComponent
@@ -37,7 +35,7 @@ import { MatInputModule } from '@angular/material/input';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NoopAnimationsModule,
+    BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
     MatDialogModule,

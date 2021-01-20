@@ -1,21 +1,42 @@
 package com.test.ladonware.entities;
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+@Document(collection = "products")
 public class Product {
 
-	private String id;
+	@Id
+	private ObjectId id;
+	
+	@Field("name")
 	private String name;
+	
+	@Field("description")
 	private String description;
+	
+	@Field("category_name")
 	private String category_name;
+	
+	@Field("price")
 	private double price;
+	
+	@Field("quantity")
 	private int quantity;
+	
+	@Field("status")
 	private String status;
+	
+	@Field("image_url")
 	private String image_url;
 
 	public String getId() {
-		return id;
+		return id.toHexString();
 	}
 
-	public void setId(String id) {
+	public void setId(ObjectId id) {
 		this.id = id;
 	}
 

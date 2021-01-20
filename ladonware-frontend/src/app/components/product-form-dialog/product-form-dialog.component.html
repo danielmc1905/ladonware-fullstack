@@ -1,5 +1,5 @@
 <form class="product-form" [formGroup]="productForm" (submit)="submitForm()">
-    <h2>{{ product.id ? 'Editar
+    <h2>{{ product.name ? 'Editar
         producto' : 'Agregar nuevo producto'}}</h2>
     <mat-form-field class="form-inputs">
         <mat-label>Nombre del producto</mat-label>
@@ -7,7 +7,7 @@
     </mat-form-field>
     <mat-form-field class="form-inputs">
         <mat-label>Descripción del producto</mat-label>
-        <input matInput placeholder="84% Poliester, 16% Elástico" formControlName="description">
+        <input matInput placeholder="84% Poliester, 16% Elástico" maxlength="48" formControlName="description">
     </mat-form-field>
 
     <mat-form-field class="form-inputs">
@@ -37,16 +37,25 @@
         </mat-select>
     </mat-form-field>
 
+    <div class="form-inputs upload-file">
+        <label [ngClass]="{'image-uploaded': imageUploaded}">
+            <mat-spinner *ngIf="uploading" [diameter]="25"></mat-spinner>
+            <span *ngIf="!uploading && !imageUploaded">Adjuntar imagen</span>
+            <span *ngIf="imageUploaded">Imagen adjuntada</span>
+        </label>
+        <input type="file" accept="image/*" (change)="uploadImage($event)" />
+    </div>
 
-    <mat-form-field class="form-inputs">
-        <mat-label>Ingresar enlace de la imagen</mat-label>
-        <input matInput placeholder="https://google.sites.com" formControlName="image_url">
-    </mat-form-field>
+    <div *ngIf="error != ''" class="form-inputs error-message">
+        {{ error }}
+    </div>
 
     <div class="buttons-section">
         <button class="submit-btn" mat-raised-button type="submit" color="primary"
-            [ngClass]="{'disable-btn': !productForm.valid }" [disabled]="!productForm.valid">{{ product.id ? 'Editar
-            producto' : 'Añadir producto'}}</button>
-        <button mat-raised-button (click)="dialogRef.close()">Cancelar</button>
+            [ngClass]="{'disable-btn': !productForm.valid }" [disabled]="!productForm.valid">
+            <span *ngIf="!loading">{{ product.name ? 'Editar producto' : 'Añadir producto'}}</span>
+            <mat-spinner *ngIf="loading" [diameter]="30"></mat-spinner>
+        </button>
+        <button type="reset" mat-raised-button (click)="dialogRef.close(null)">Cancelar</button>
     </div>
 </form>

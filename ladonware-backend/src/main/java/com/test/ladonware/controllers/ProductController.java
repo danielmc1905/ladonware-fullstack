@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,10 +25,10 @@ import com.test.ladonware.services.ProductService;
 @RequestMapping(path = "/v1/products")
 @CrossOrigin(origins = "*")
 public class ProductController {
-	
+
 	@Autowired
 	FirebaseService firebaseService;
-	
+
 	@Autowired
 	ProductService productService;
 
@@ -39,7 +40,16 @@ public class ProductController {
 	@PostMapping("/add")
 	public ResponseEntity<HashMap<String, Object>> createProduct(@RequestBody Product product) {
 
-		return null;
+		HashMap<String, Object> response = new HashMap<String, Object>();
+
+		boolean created = productService.createOrEditProduct(product);
+
+		if (created) {
+			response.put("Message", "Product successfully created");
+			return new ResponseEntity<>(response, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+		}
 	}
 
 	/*
@@ -50,7 +60,16 @@ public class ProductController {
 	@PutMapping("/edit")
 	public ResponseEntity<HashMap<String, Object>> editProduct(@RequestBody Product product) {
 
-		return null;
+		HashMap<String, Object> response = new HashMap<String, Object>();
+
+		boolean edited = productService.createOrEditProduct(product);
+
+		if (edited) {
+			response.put("Message", "Product successfully edited");
+			return new ResponseEntity<>(response, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+		}
 	}
 
 	/*
@@ -60,7 +79,9 @@ public class ProductController {
 	@GetMapping("/")
 	public List<Product> getAllProducts() {
 
-		return null;
+		List<Product> productsList = productService.getAllProducts();
+
+		return productsList;
 	}
 
 	/*
@@ -68,18 +89,41 @@ public class ProductController {
 	 * 
 	 * @Param id
 	 */
-	@DeleteMapping("/{id}")
-	public ResponseEntity<HashMap<String, Object>> deleteProductById(@PathVariable String id) {
+	@DeleteMapping("/{id}/{fileName}")
+	public ResponseEntity<HashMap<String, Object>> deleteProductById(@PathVariable String id,
+			@PathVariable String fileName) {
 
-		return null;
+		HashMap<String, Object> response = new HashMap<String, Object>();
+
+		boolean deleted = productService.deleteProduct(id, fileName);
+
+		if (deleted) {
+			response.put("Message", "Product successfully deleted");
+			return new ResponseEntity<>(response, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+		}
+
 	}
 
 	/*
 	 * Uploads a multipart file to the firebase storage service
 	 */
 	@PostMapping("/files")
-	public String uploadImage(@RequestBody MultipartFile file) {
-		
-		return firebaseService.uploadFile(file);
+	public ResponseEntity<HashMap<String, Object>> uploadImage(@RequestBody MultipartFile file) {
+
+		HashMap<String, Object> response = new HashMap<String, Object>();
+		String imageUrl = firebaseService.uploadFile(file);
+
+		if (imageUrl != null) {
+
+			response.put("imageUrl", imageUrl);
+
+			return new ResponseEntity<>(response, HttpStatus.OK);
+		} else {
+			response.put("Error", "File Not Found");
+			return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+		}
+
 	}
 }

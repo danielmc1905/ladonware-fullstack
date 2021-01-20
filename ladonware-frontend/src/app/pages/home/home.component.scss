@@ -137,6 +137,17 @@
             height: calc(100vh - 400px);
             padding-left: 35px;
             padding-right: 30px;
+
+            .loading {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: calc(100vh - 400px);
+            }
+
+            .loading::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+                stroke: #0da2ff;
+            }
         }
 
         .product-items::-webkit-scrollbar {

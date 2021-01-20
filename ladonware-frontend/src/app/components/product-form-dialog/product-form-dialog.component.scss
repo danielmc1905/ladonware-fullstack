@@ -8,14 +8,64 @@
         width: 90%;
     }
 
+    .upload-file {
+        position: relative;
+
+        label {
+            width: 100%;
+            height: 35px;
+            border: 1px solid grey;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        label::ng-deep .mat-progress-spinner circle,
+        .mat-spinner circle {
+            stroke: #0da2ff;
+        }
+
+        .image-uploaded {
+            background-color: #0da2ff;
+            color: #fff;
+            border: none;
+        }
+
+        input {
+            position: absolute;
+            width: 100%;
+            height: 35px;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+    }
+
+    .error-message {
+        margin-top: 10px;
+        text-align: center;
+        color: red;
+    }
+
     .buttons-section {
         display: flex;
         justify-content: space-between;
         width: 90%;
+        margin-top: 20px;
 
         .submit-btn {
             color: #fff;
             background-color: #0da2ff;
+            width: 126px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .submit-btn::ng-deep .mat-progress-spinner circle,
+        .mat-spinner circle {
+            stroke: #fff;
         }
 
         button {
@@ -28,8 +78,7 @@
         }
 
         button:focus {
-            outline:0;
+            outline: 0;
         }
     }
-    
 }

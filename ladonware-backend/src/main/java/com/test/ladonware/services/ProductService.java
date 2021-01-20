@@ -14,12 +14,16 @@ public class ProductService {
 	@Autowired
 	private IProductDAO dao;
 
+	@Autowired
+	private FirebaseService firebaseService;
+
 	/*
 	 * Edits or creates a product
 	 * 
 	 * @Param Product
 	 */
 	public boolean createOrEditProduct(Product product) {
+
 		Product savedProduct = dao.save(product);
 		if (savedProduct != null) {
 			return true;
@@ -41,7 +45,19 @@ public class ProductService {
 	 * 
 	 * @Param id
 	 */
-	public void deleteProduct(String id) {
-		dao.deleteById(id);
+	public boolean deleteProduct(String id, String fileName) {
+
+		if (firebaseService.deleteFile(fileName)) {
+			try {
+				dao.deleteById(id);
+				return true;
+			} catch (Exception e) {
+				System.out.println("Error deleting product: " + e.getMessage());
+				return false;
+			}
+		} else {
+			return false;
+		}
+
 	}
 }

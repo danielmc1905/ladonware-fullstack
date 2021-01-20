@@ -6,7 +6,7 @@ import Product from '../model/Product';
 @Injectable({
   providedIn: 'root'
 })
-export class RestService {
+export class RequestService {
 
   constructor(
     private _http: HttpClient
@@ -28,6 +28,7 @@ export class RestService {
    * @Param Product
    */
   editProduct(product: Product) {
+    console.log(product)
     let url = environment.baseUrl + 'products/edit';
     return this._http.put<any>(url, product);
   }
@@ -46,15 +47,16 @@ export class RestService {
    *
    * @Param id
    */
-  deleteProduct(id: string) {
-    let url = environment.baseUrl + `products/${id}`;
-    return this._http.delete<any>(url, { params: { id: id } });
+  deleteProduct(id: string, fileName: string) {
+    let url = environment.baseUrl + `products/${id}/${fileName}`;
+    return this._http.delete<any>(url);
   }
 
   /*
    * Requests to upload a multipart file to the firebase storage service
    */
   uploadImage(file: any) {
+    console.log(file)
     let url = environment.baseUrl + 'products/files';
     return this._http.post<any>(url, file);
   }

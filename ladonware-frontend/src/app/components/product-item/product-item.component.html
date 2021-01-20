@@ -1,25 +1,25 @@
 <div class="product-item">
     <div class="field product-description">
         <div class="img">
-            <img [src]="product.image_url" alt="">
+            <img [src]="product?.image_url" alt="">
         </div>
         <div class="product-info">
-            <p>{{ product.name }}</p>
-            <p>{{ product.description }}</p>
+            <p>{{ product?.name }}</p>
+            <p>{{ product?.description }}</p>
         </div>
     </div>
     <span class="field">
-        {{ product.category_name }}
+        {{ product?.category_name }}
     </span>
     <span class="field">
-        $ {{ product.price }}
+        $ {{ product?.price }}
     </span>
     <span class="field">
-        {{ product.quantity }}
+        {{ product?.quantity }}
     </span>
     <div class="field">
         <div [style.background-color]="getStatusColor()" id="dot"></div>
-        <span [style.color]="getStatusColor()">{{ product.status }}</span>
+        <span [style.color]="getStatusColor()">{{ product?.status }}</span>
     </div>
     <div class="field product-actions">
         <span class="material-icons edit" (click)="openFormDialog()">

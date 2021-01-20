@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import Product from 'src/app/model/Product';
+import { ProductsService } from 'src/app/services/products.service';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { ProductFormDialogComponent } from '../product-form-dialog/product-form-dialog.component';
 
@@ -14,19 +15,18 @@ export class ProductItemComponent implements OnInit {
   @Input() product: Product;
   @Input() showUnderline: boolean;
 
-  status: string = 'En Stock';
-
   constructor(
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private productsService: ProductsService
   ) { }
 
   ngOnInit(): void {
   }
 
   getStatusColor() {
-    if (this.status == 'En Stock') {
+    if (this.product?.status == 'En Stock') {
       return '#1cb133';
-    } else if (this.status == 'Limitado') {
+    } else if (this.product?.status == 'Limitado') {
       return '#eda620';
     } else {
       return '#e04517';
@@ -39,9 +39,10 @@ export class ProductItemComponent implements OnInit {
       data: this.product
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(result);
+    dialogRef.afterClosed().subscribe(product => {
+      if (product) {
+        this.product = product;
+      }
     });
   }
 
@@ -51,9 +52,11 @@ export class ProductItemComponent implements OnInit {
       data: this.product
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(result);
+    dialogRef.afterClosed().subscribe(product => {
+      console.log(product)
+      if (product) {
+        this.productsService.deleteProduct(product);
+      }
     });
   }
 
