@@ -31,25 +31,22 @@ public class FirebaseService {
 	 * 
 	 * @Param MultipartFile
 	 */
-	public String uploadFile(MultipartFile multipartFile) {
+	public String uploadFile(MultipartFile file) {
 
 		firebaseInit();
 
-		File file;
 		try {
-			file = convertMultiPartToFile(multipartFile);
-			Path filePath = file.toPath();
-			String objectName = generateFileName(multipartFile);
+			String objectName = generateFileName(file);
 
 			Storage storage = storageOptions.getService();
 
 			BlobId blobId = BlobId.of(bucketName, "products/" + objectName);
 			BlobInfo blobInfo = BlobInfo.newBuilder(blobId).build();
-			storage.create(blobInfo, Files.readAllBytes(filePath));
+			storage.create(blobInfo, file.getBytes());
 
 			String imageUrl = "https://storage.googleapis.com/" + bucketName + "/products/" + objectName;
 
-			System.out.println("File " + filePath + " uploaded to bucket " + bucketName + " as " + objectName);
+			System.out.println("File uploaded to bucket " + bucketName + " as " + objectName);
 			return imageUrl;
 
 		} catch (IOException e) {
@@ -58,19 +55,6 @@ public class FirebaseService {
 			return null;
 		}
 
-	}
-
-	/*
-	 * Converts the multipartfile to a fileOutputStream in order to be uploaded
-	 * 
-	 * @Param MultipartFile
-	 */
-	private File convertMultiPartToFile(MultipartFile file) throws IOException {
-		File convertedFile = new File(Objects.requireNonNull(file.getOriginalFilename()));
-		FileOutputStream fos = new FileOutputStream(convertedFile);
-		fos.write(file.getBytes());
-		fos.close();
-		return convertedFile;
 	}
 
 	/*
