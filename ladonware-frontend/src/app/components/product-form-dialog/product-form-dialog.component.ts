@@ -42,7 +42,6 @@ export class ProductFormDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.product)
     if (this.product.name) {
       this.newProduct = false;
       this.imageUploaded = true;
@@ -66,14 +65,12 @@ export class ProductFormDialogComponent implements OnInit {
     if (this.newProduct) {
       this.requestService.createProduct(this.product)
         .subscribe(resp => {
-          console.log(resp)
           this.loading = false;
           this.dialogRef.close(this.product)
         });
     } else {
       this.requestService.editProduct(this.product)
         .subscribe(resp => {
-          console.log(resp)
           this.loading = false;
           this.dialogRef.close(this.product)
         });

@@ -63,8 +63,8 @@ public class FirebaseService {
 	 * @Param MultipartFile
 	 * 
 	 */
-	private String generateFileName(MultipartFile multiPart) {
-		return new Date().getTime() + "-" + Objects.requireNonNull(multiPart.getOriginalFilename()).replace(" ", "_");
+	private String generateFileName(MultipartFile file) {
+		return new Date().getTime() + "-" + Objects.requireNonNull(file.getOriginalFilename()).replace(" ", "_");
 	}
 
 	/*

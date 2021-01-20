@@ -28,7 +28,6 @@ export class RequestService {
    * @Param Product
    */
   editProduct(product: Product) {
-    console.log(product)
     let url = environment.baseUrl + 'products/edit';
     return this._http.put<any>(url, product);
   }
@@ -56,7 +55,6 @@ export class RequestService {
    * Requests to upload a multipart file to the firebase storage service
    */
   uploadImage(file: any) {
-    console.log(file)
     let url = environment.baseUrl + 'products/files';
     return this._http.post<any>(url, file);
   }

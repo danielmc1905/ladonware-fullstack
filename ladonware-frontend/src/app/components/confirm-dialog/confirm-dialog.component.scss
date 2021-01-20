@@ -1,0 +1,23 @@
+.confirm-dialog {
+    .buttons-section {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .delete-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 20px;
+        width: 90px;
+    }
+
+    .delete-btn::ng-deep .mat-progress-spinner circle,
+    .mat-spinner circle {
+        stroke: #fff;
+    }
+
+    button:focus {
+        outline: none;
+    }
+}

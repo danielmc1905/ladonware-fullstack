@@ -1,3 +1,11 @@
-<p>confirm-dialog works!</p>
-<button (click)="deleteProduct()">Delete</button>
-<button (click)="dialogRef.close(null)">Delete</button>
+<div class="confirm-dialog">
+    <h2>Confirmación de acción</h2>
+    <h4>¿Está seguro/a que desea eliminar el producto?</h4>
+    <div class="buttons-section">
+        <button class="delete-btn" tabIndex="-1" mat-raised-button color="warn" (click)="deleteProduct()">
+            <mat-spinner *ngIf="loading" [diameter]="25"></mat-spinner>
+            <span *ngIf="!loading">Eliminar</span>
+        </button>
+        <button mat-raised-button tabIndex="-1" (click)="dialogRef.close(null)">Cancelar</button>
+    </div>
+</div>

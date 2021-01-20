@@ -53,7 +53,6 @@ export class ProductItemComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(product => {
-      console.log(product)
       if (product) {
         this.productsService.deleteProduct(product);
       }

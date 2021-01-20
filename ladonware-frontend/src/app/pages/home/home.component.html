@@ -51,7 +51,7 @@
                         </div>
                         <div class="product-items">
                             <div *ngIf="productsList.length > 0">
-                                <app-product-item *ngFor="let item of productsList; let i = index" [product]="item"
+                                <app-product-item *ngFor="let item of productsList | productFilter: searchText; let i = index" [product]="item"
                                     [showUnderline]="i+1 != productsList.length">
                                 </app-product-item>
                             </div>

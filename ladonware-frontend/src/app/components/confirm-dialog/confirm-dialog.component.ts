@@ -10,6 +10,8 @@ import { RequestService } from 'src/app/services/request.service';
 })
 export class ConfirmDialogComponent implements OnInit {
 
+  loading: boolean = false;
+
   constructor(
     public dialogRef: MatDialogRef<ConfirmDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public product: Product,
@@ -17,14 +19,14 @@ export class ConfirmDialogComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.product)
   }
 
   deleteProduct() {
+    this.loading = true;
     let fileName = this.product.image_url.split("/")[5];
     this.requestService.deleteProduct(this.product.id, fileName)
-      .subscribe(resp => {
-        console.log(resp)
+      .subscribe(() => {
+        this.loading = false;
         this.dialogRef.close(this.product)
       });
   }
