@@ -1,6 +1,11 @@
 # ladonware-fullstack
 Prueba técnica ladonware
 
+Enlaces de interés
+1. Front-end: hosteado en Firebase y puede ser accedido con el siguiente enlace: https://ladonware-6f358.web.app/home.
+2. Back-end: hosteado en Heroku y puede ser accedido con el siguiente enlace: https://ladonware.herokuapp.com/.
+
+
 Pasos iniciales
 1. Descargar e instalar nodejs mediante el siguiente enlace https://nodejs.org/es/.
 2. Descargar e instalar git haciendo uso del siguiente enlace https://git-scm.com/.
