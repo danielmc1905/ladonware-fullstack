@@ -42,10 +42,10 @@ public class ProductController {
 
 		HashMap<String, Object> response = new HashMap<String, Object>();
 
-		boolean created = productService.createOrEditProduct(product);
+		Product created = productService.createOrEditProduct(product);
 
-		if (created) {
-			response.put("Message", "Product successfully created");
+		if (created != null) {
+			response.put("product", created);
 			return new ResponseEntity<>(response, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
@@ -62,10 +62,10 @@ public class ProductController {
 
 		HashMap<String, Object> response = new HashMap<String, Object>();
 
-		boolean edited = productService.createOrEditProduct(product);
+		Product edited = productService.createOrEditProduct(product);
 
-		if (edited) {
-			response.put("Message", "Product successfully edited");
+		if (edited != null) {
+			response.put("product", edited);
 			return new ResponseEntity<>(response, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);

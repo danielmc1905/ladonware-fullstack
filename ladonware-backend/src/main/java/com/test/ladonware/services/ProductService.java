@@ -22,13 +22,13 @@ public class ProductService {
 	 * 
 	 * @Param Product
 	 */
-	public boolean createOrEditProduct(Product product) {
+	public Product createOrEditProduct(Product product) {
 
 		Product savedProduct = dao.save(product);
 		if (savedProduct != null) {
-			return true;
+			return savedProduct;
 		} else {
-			return false;
+			return null;
 		}
 	}
 

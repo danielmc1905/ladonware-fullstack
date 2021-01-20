@@ -66,6 +66,7 @@ export class ProductFormDialogComponent implements OnInit {
       this.requestService.createProduct(this.product)
         .subscribe(resp => {
           this.loading = false;
+          this.product.id = resp.product.id;
           this.dialogRef.close(this.product)
         });
     } else {
