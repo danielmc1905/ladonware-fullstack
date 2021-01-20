@@ -1,4 +1,5 @@
-.container-fluid, .row {
+.container-fluid,
+.row {
     /*width: 100%;
     height: 100%;*/
     padding: 0;
@@ -86,7 +87,8 @@
                     width: 168px;
                 }
 
-                input:focus, button:focus {
+                input:focus,
+                button:focus {
                     outline: none;
                 }
             }
@@ -94,7 +96,7 @@
 
         .products-list {
             border-radius: 3px;
-            box-shadow: -1px 0px 5px 0px rgba(0,0,0,0.35);
+            box-shadow: -1px 0px 5px 0px rgba(0, 0, 0, 0.35);
             margin-left: 12px;
             margin-right: 12px;
             background-color: #fff;
@@ -145,7 +147,8 @@
                 height: calc(100vh - 400px);
             }
 
-            .loading::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+            .loading::ng-deep .mat-progress-spinner circle,
+            .mat-spinner circle {
                 stroke: #0da2ff;
             }
         }
