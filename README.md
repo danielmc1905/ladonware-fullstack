@@ -6,7 +6,7 @@
 3. Documentación del API: https://ladonware.herokuapp.com/swagger-ui.html.
 
 
-## Arquitectura del proyecto
+## Arquitectura de la prueba
 ![Arquitectura](https://github.com/danielmc1905/ladonware-fullstack/blob/main/Ladonware.png)
 
 
